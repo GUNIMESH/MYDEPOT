@@ -5,6 +5,8 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import com.google.gson.GsonBuilder
+import com.maxfarasat.bitcointracker.DataClasses.Entities
 import kotlinx.android.synthetic.main.activity_main.*
 import okhttp3.*
 import java.io.IOException
@@ -35,7 +37,16 @@ class MainActivity : AppCompatActivity() {
         val request: Request = Request.Builder().url(URL).build()
         okHttpClient.newCall(request).enqueue(object : Callback{
             override fun onFailure(call: Call?, e: IOException?) {}
-            override fun onResponse(call: Call?, response: Response?){}
+            override fun onResponse(call: Call?, response: Response?){
+                val json = response?.body()?.string()
+                val gson =  GsonBuilder().create()
+                val BitCoinData = gson.fromJson(json, Entities::class.java)
+                val rateUSD = BitCoinData.bpi.uSD.rateFloat.toString()
+                val rateEURO = BitCoinData.bpi.eUR.rateFloat.toString()
+                val ratePOUNDS = BitCoinData.bpi.gBP.rateFloat.toString()
+                val latestTime = BitCoinData.time.updateduk
+                val disClaimer = BitCoinData.disclaimer
+            }
         })
 
     }
