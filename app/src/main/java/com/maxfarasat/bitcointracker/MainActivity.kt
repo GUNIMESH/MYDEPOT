@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import okhttp3.OkHttpClient
 
 class MainActivity : AppCompatActivity() {
 
@@ -24,6 +25,9 @@ class MainActivity : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
     private fun loadBitCoinPrice(){
+        val URL = "https://api.coindesk.com/v1/bpi/currentprice.json"
+        val okHttpClient = OkHttpClient.Builder()
+            .build()
 
     }
 
