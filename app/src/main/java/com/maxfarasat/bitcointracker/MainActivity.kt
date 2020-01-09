@@ -16,6 +16,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        loadBitCoinPrice()
     }
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.main, menu)
@@ -24,6 +25,7 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.load -> {
+                loadBitCoinPrice()
                 return true
             }
         }
@@ -46,6 +48,12 @@ class MainActivity : AppCompatActivity() {
                 val ratePOUNDS = BitCoinData.bpi.gBP.rateFloat.toString()
                 val latestTime = BitCoinData.time.updateduk
                 val disClaimer = BitCoinData.disclaimer
+                runOnUiThread {
+                    progressBar.visibility = View.GONE
+                    bitcoinValues.text = "\n$$rateUSD\n€$rateEURO\n£$ratePOUNDS"
+                    updatedTime.text = "BitCoin Price Updated on \n$latestTime"
+                    message.text = "*Disclaimer: $disClaimer"
+                }
             }
         })
 
