@@ -4,7 +4,10 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
+import kotlinx.android.synthetic.main.activity_main.*
 import okhttp3.OkHttpClient
+import okhttp3.Request
 
 class MainActivity : AppCompatActivity() {
 
@@ -28,6 +31,8 @@ class MainActivity : AppCompatActivity() {
         val URL = "https://api.coindesk.com/v1/bpi/currentprice.json"
         val okHttpClient = OkHttpClient.Builder()
             .build()
+        progressBar.visibility = View.VISIBLE
+        val request: Request = Request.Builder().url(URL).build()
 
     }
 
