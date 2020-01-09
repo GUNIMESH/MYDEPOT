@@ -34,7 +34,8 @@ class MainActivity : AppCompatActivity() {
         progressBar.visibility = View.VISIBLE
         val request: Request = Request.Builder().url(URL).build()
         okHttpClient.newCall(request).enqueue(object : Callback{
-
+            override fun onFailure(call: Call?, e: IOException?) {}
+            override fun onResponse(call: Call?, response: Response?){}
         })
 
     }
