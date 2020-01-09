@@ -6,8 +6,8 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import kotlinx.android.synthetic.main.activity_main.*
-import okhttp3.OkHttpClient
-import okhttp3.Request
+import okhttp3.*
+import java.io.IOException
 
 class MainActivity : AppCompatActivity() {
 
@@ -33,6 +33,9 @@ class MainActivity : AppCompatActivity() {
             .build()
         progressBar.visibility = View.VISIBLE
         val request: Request = Request.Builder().url(URL).build()
+        okHttpClient.newCall(request).enqueue(object : Callback{
+
+        })
 
     }
 
