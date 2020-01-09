@@ -1,4 +1,4 @@
-#Fri Jan 10 00:23:06 IST 2020
+#Fri Jan 10 00:45:20 IST 2020
 base.0=C\:\\Users\\MaxFarasat\\Desktop\\BITCOINTRACKER\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\out\\classes.dex
 path.1=classes.dex
 renamed.1=classes2.dex
